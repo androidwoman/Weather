@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"
+        android:textColor="@color/White"
         android:text="Sunday"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -24,7 +24,7 @@
         android:id="@+id/tv_details"
         android:text="Clear"
         android:textSize="14sp"
-        android:textColor="#2f2fc6"
+        android:textColor="@color/White"
         android:layout_below="@id/tv_day"
         android:layout_alignLeft="@id/tv_day"
         android:layout_marginTop="8dp"
@@ -38,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textSize="16sp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/White"
         />
 
     <TextView
@@ -50,6 +50,6 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="20dp"
         android:textSize="16sp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@color/White"/>
 
 </RelativeLayout>

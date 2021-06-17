@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewpager = (ViewPager) findViewById(R.id.view_pager);
+        viewpager.setPageTransformer(true,new VerticalFlipTransformation());
         pb = (ProgressBar) findViewById(R.id.pb);
         init();
 //        updateHandler = new Handler();
@@ -96,8 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                     for(int i = 0; i < jsonlist.length() ; i++){
                         JSONObject res = jsonlist.getJSONObject(i);
-                        String cityname = res.getString("name").toUpperCase() + ", " +
-                                res.getJSONObject("sys").getString("country");
+                        String cityname = res.getString("name");
 
                         double temprature = res.getJSONObject("main").getDouble("temp");
                         JSONObject  jsondetails = res.getJSONArray("weather").getJSONObject(0);
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private String prepareUrl(){
-        StringBuilder sb = new StringBuilder("http://api.openweathermap.org/data/2.5/group?id=");
+        StringBuilder sb = new StringBuilder("https://api.openweathermap.org/data/2.5/group?id=");
         for(int i= 0; i < citylist.size() ; i++){
             sb.append(String.valueOf(citylist.get(i).getId()));
             if(i < citylist.size() - 1){
@@ -157,17 +157,7 @@ public class MainActivity extends AppCompatActivity {
         return sb.toString();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add("Locations").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                startActivity(new Intent(MainActivity.this, CitiesActivity.class));
-                return false;
-            }
-        });
-        return super.onCreateOptionsMenu(menu);
-    }
+
 
     class MyPagerAdapter extends FragmentPagerAdapter {
 

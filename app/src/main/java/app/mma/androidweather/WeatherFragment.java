@@ -1,5 +1,6 @@
 package app.mma.androidweather;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.text.Html;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -47,6 +49,8 @@ public class WeatherFragment extends Fragment {
     private long sunset;
     private int weatherId;
     private long cityId;
+    private ImageButton img_btn;
+
 
     private boolean forecastLoaded = false;
     JSONArray forecastData = new JSONArray();
@@ -54,6 +58,7 @@ public class WeatherFragment extends Fragment {
         WeatherFragment fragment = new WeatherFragment();
         fragment.setArguments(args);
         return fragment;
+
     }
 
     @Override
@@ -78,6 +83,14 @@ public class WeatherFragment extends Fragment {
         tv_temp = (TextView) view.findViewById(R.id.temp);
         tv_weatherIcon = (TextViewWeather) view.findViewById(R.id.weather_icon);
         rv_forecast = (RecyclerView) view.findViewById(R.id.forecast_rv);
+        img_btn=view.findViewById(R.id.img_btn);
+        img_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), CitiesActivity.class));
+
+            }
+        });
 
         fill();
         return view;
