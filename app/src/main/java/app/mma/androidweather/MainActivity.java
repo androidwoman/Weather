@@ -21,6 +21,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.matteobattilana.weather.PrecipType;
+import com.github.matteobattilana.weather.WeatherView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewpager = (ViewPager) findViewById(R.id.view_pager);
+
+        WeatherView weatherView = findViewById(R.id.weatherview);
+        weatherView.setWeatherData(PrecipType.CLEAR);
+        weatherView.setEmissionRate(80);
+        weatherView.setFadeOutPercent(6);
+        weatherView.setSpeed(3000);
         viewpager.setPageTransformer(true,new VerticalFlipTransformation());
         pb = (ProgressBar) findViewById(R.id.pb);
         init();
@@ -63,15 +71,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        Log.i("weather", "onResume");
         super.onResume();
+        init();
         loadWeatherData();
 //        updateHandler.post(runnable);
     }
 
+
+
     @Override
     protected void onPause() {
         super.onPause();
+
 //        updateHandler.removeCallbacks(runnable);
     }
 
@@ -146,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String prepareUrl(){
         StringBuilder sb = new StringBuilder("https://api.openweathermap.org/data/2.5/group?id=");
+        if(citylist.size()==0)  sb.append("74477");
         for(int i= 0; i < citylist.size() ; i++){
             sb.append(String.valueOf(citylist.get(i).getId()));
             if(i < citylist.size() - 1){

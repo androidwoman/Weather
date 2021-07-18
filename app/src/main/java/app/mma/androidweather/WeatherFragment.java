@@ -23,6 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.matteobattilana.weather.PrecipType;
+import com.github.matteobattilana.weather.WeatherView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,6 +67,7 @@ public class WeatherFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle args = getArguments();
+
         cityName = args.getString("cityName");
         temprature = args.getDouble("temprature");
         sunrise = args.getLong("sunrise");
@@ -78,7 +81,7 @@ public class WeatherFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.weather_card, container, false);
-        tv_city = (TextView) view.findViewById(R.id.city);
+         tv_city = (TextView) view.findViewById(R.id.city);
         tv_details = (TextView) view.findViewById(R.id.details);
         tv_temp = (TextView) view.findViewById(R.id.temp);
         tv_weatherIcon = (TextViewWeather) view.findViewById(R.id.weather_icon);

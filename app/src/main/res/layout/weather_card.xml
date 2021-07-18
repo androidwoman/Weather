@@ -2,101 +2,97 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:layout_margin="16dp">
+    android:layout_margin="16dp"
+    android:background="@drawable/clear">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/weather_layout">
 
 
-               <TextView
-                   android:id="@+id/city"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentTop="true"
-                   android:layout_centerInParent="true"
-                   android:textSize="20sp"
-                   android:textColor="@color/White"
-                   android:typeface="monospace"
-                   android:text="Tehran"
-                   />
-               <androidx.appcompat.widget.AppCompatImageButton
-                   android:id="@+id/img_btn"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:src="@drawable/ic_plus"
-                   android:layout_alignBottom="@id/city"
-                   android:layout_alignParentLeft="true"
-                   android:tint="#FFFFFF"
-                   android:background="@null"
-                   ></androidx.appcompat.widget.AppCompatImageButton>
+            <RelativeLayout
+                android:id="@+id/weather_layout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
 
 
-
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_centerInParent="true">
                 <TextView
-                    android:id="@+id/temp"
+                    android:id="@+id/city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="26"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:text="Tehran"
                     android:textColor="@color/White"
-                    android:textSize="60sp"
-                    android:layout_gravity="center_vertical|left"
-                    android:layout_marginRight="20dp"
-                    />
+                    android:textSize="20sp"
+                    android:typeface="monospace" />
 
-                <app.mma.androidweather.TextViewWeather
-                    android:id="@+id/weather_icon"
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/img_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="70sp"
+                    android:layout_alignBottom="@id/city"
+                    android:layout_alignParentLeft="true"
+                    android:background="@null"
+                    android:src="@drawable/ic_plus"
+                    android:tint="#FFFFFF"></androidx.appcompat.widget.AppCompatImageButton>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|left"
+                        android:layout_marginRight="20dp"
+                        android:text="26"
+                        android:textColor="@color/White"
+                        android:textSize="60sp" />
+
+                    <app.mma.androidweather.TextViewWeather
+                        android:id="@+id/weather_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|right"
+                        android:textColor="@color/White"
+                        android:textSize="70sp" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:paddingLeft="30dp"
+
+                    android:paddingRight="30dp"
+                    android:textAlignment="center"
                     android:textColor="@color/White"
-                    android:layout_gravity="center_vertical|right"
-                    />
+                    android:textSize="18sp"
+                    android:typeface="monospace" />
 
+            </RelativeLayout>
 
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/details"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/forecast_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingRight="30dp"
-                android:paddingLeft="30dp"
-                android:textSize="18sp"
-                android:textColor="@color/White"
+                android:layout_below="@id/weather_layout" />
 
-                android:typeface="monospace"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:textAlignment="center"
-                android:gravity="center"
-                />
 
-        </RelativeLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/forecast_rv"
-            android:layout_below="@id/weather_layout"/>
 
     </RelativeLayout>
-
-
 
 </androidx.core.widget.NestedScrollView>

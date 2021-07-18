@@ -49,15 +49,16 @@ public class AddCityFragment extends DialogFragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                citylist = dbHelper.searchCityByName(query, "20");
-                Log.i(AddCityFragment.class.getSimpleName(),
-                        "citylist : " + citylist.size() + " items");
-                updateDisplay();
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                citylist = dbHelper.searchCityByName(newText, "20");
+                Log.i(AddCityFragment.class.getSimpleName(),
+                        "citylist : " + citylist.size() + " items");
+                updateDisplay();
                 return false;
             }
         });
@@ -124,7 +125,7 @@ public class AddCityFragment extends DialogFragment {
             super(itemView);
             btn = (Button) itemView.findViewById(R.id.btn);
             btn.setText("Add");
-            btn.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.add_color));
+            btn.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorPrimaryDark));
             btn.setBackgroundResource(R.drawable.city_add_btn_bg);
             tv_city_name = (TextView) itemView.findViewById(R.id.city_name);
         }
